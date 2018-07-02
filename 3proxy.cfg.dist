@@ -1,0 +1,24 @@
+# DNS сервера
+nserver __DNS1__
+nserver __DNS2__
+# Оставим размер кэша для запросов DNS по умолчанию
+nscache 65536
+# Равно как и таймауты
+timeouts 1 5 30 60 180 1800 15 60
+
+# Путь к логам и формат лога
+log /dev/stdout
+logformat "- +_L%t.%. %N.%p %E %U %C:%c %R:%r %O %I %h %T"
+
+# Создаем пользователей и назначаем им пароли
+users __USER__:CR:__PASSWORD__
+
+# Конфигурация прокси
+auth strong
+maxconn 32
+proxy -p__PORT__
+flush
+
+# Запускаем сервер от пользователя nobody
+setgid __NOBODY_GROUP__
+setuid __NOBODY_USER__
