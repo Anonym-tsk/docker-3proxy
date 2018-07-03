@@ -6,7 +6,7 @@ NOBODY_USER=$(id -g nobody)
 if [ -z "$PASSWORD" ] || [ "$PASSWORD" == "password" ] ; then
     PASSWORD="$(head /dev/urandom | tr -dc A-Za-z0-9 | head -c 13 ; echo '')"
 fi
-PASSWORD_ENCODED="$(echo -n $PASSWORD | md5sum | awk '{print $1}')"
+PASSWORD_ENCODED="$(mkpasswd -m md5 <<< $PASSWORD)"
 
 if [ "$1" = "start_proxy" ]; then
     cp 3proxy.cfg.dist 3proxy.cfg

@@ -11,7 +11,7 @@ log /dev/stdout
 logformat "- +_L%t.%. %N.%p %E %U %C:%c %R:%r %O %I %h %T"
 
 # Создаем пользователей и назначаем им пароли
-users __USER__:CR:__PASSWORD__
+users "__USER__:CR:__PASSWORD__"
 
 # Конфигурация прокси
 auth strong
