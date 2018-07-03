@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 NOBODY_GROUP=$(id -g nobody)
 NOBODY_USER=$(id -g nobody)
