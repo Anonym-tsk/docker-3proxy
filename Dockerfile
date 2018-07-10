@@ -1,7 +1,7 @@
 ##################
 # Building stage #
 ##################
-FROM alpine:latest as builder
+FROM alpine:3.8 as builder
 
 # Install base packages
 RUN apk update && apk add tar build-base linux-headers bind-tools
@@ -23,7 +23,7 @@ RUN make -f Makefile.Linux && \
 #########################
 # Execution image stage #
 #########################
-FROM alpine:latest
+FROM alpine:3.8
 
 # Define default ENV values
 ENV USER=user
