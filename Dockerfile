@@ -31,7 +31,6 @@ ENV PASSWORD=password
 ENV PORT=3128
 ENV DNS1=1.1.1.1
 ENV DNS2=8.8.8.8
-ENV ALLOW="*"
 ENV DENY="* * 127.0.0.1"
 
 # Install and setup 3proxy files

@@ -9,8 +9,8 @@ logformat "- +_L%t.%. %N.%p %E %U %C:%c %R:%r %O %I %h %T"
 
 users "__USER__:CR:__PASSWORD__"
 
-allow __ALLOW__
 deny __DENY__
+allow *
 
 auth strong
 maxconn 32

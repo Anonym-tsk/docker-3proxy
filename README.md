@@ -9,7 +9,6 @@
 | PORT        | 3128          |
 | DNS1        | 1.1.1.1       |
 | DNS2        | 8.8.8.8       |
-| ALLOW       | *             |
 | DENY        | * * 127.0.0.1 |
 
 #### Custom usage:
@@ -23,6 +22,5 @@
         -e PORT=3128 \
         -e DNS1=1.1.1.1 \
         -e DNS1=8.8.8.8 \
-        -e ALLOW=*
         -e DENY="* * 192.168.0.0/24"
         anonymtsk/transmission

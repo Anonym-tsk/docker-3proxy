@@ -15,7 +15,6 @@ if [ "$1" = "start_proxy" ]; then
     sed -i 's/__PORT__/'"$PORT"'/g' 3proxy.cfg && \
     sed -i 's/__DNS1__/'"$DNS1"'/g' 3proxy.cfg && \
     sed -i 's/__DNS2__/'"$DNS2"'/g' 3proxy.cfg && \
-    sed -i 's#__ALLOW__#'"$ALLOW"'#g' 3proxy.cfg && \
     sed -i 's#__DENY__#'"$DENY"'#g' 3proxy.cfg && \
     sed -i 's/__NOBODY_GROUP__/'"$NOBODY_GROUP"'/g' 3proxy.cfg && \
     sed -i 's/__NOBODY_USER__/'"$NOBODY_USER"'/g' 3proxy.cfg
