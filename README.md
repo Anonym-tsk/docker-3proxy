@@ -1,4 +1,4 @@
-![](https://img.shields.io/badge/Alpine-3.7-brightgreen.svg) ![](https://img.shields.io/docker/stars/anonymtsk/3proxy.svg) ![](https://img.shields.io/docker/pulls/anonymtsk/3proxy.svg)
+![](https://img.shields.io/badge/Alpine-3.8-brightgreen.svg) ![](https://img.shields.io/docker/stars/anonymtsk/3proxy.svg) ![](https://img.shields.io/docker/pulls/anonymtsk/3proxy.svg)
 
 #### Environment:
 
