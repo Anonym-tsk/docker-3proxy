@@ -23,4 +23,4 @@
         -e DNS1=1.1.1.1 \
         -e DNS1=8.8.8.8 \
         -e DENY="* * 192.168.0.0/24"
-        anonymtsk/transmission
+        anonymtsk/3proxy
