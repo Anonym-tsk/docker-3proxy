@@ -1,35 +1,47 @@
-![](https://img.shields.io/badge/Alpine-3.8-brightgreen.svg) ![](https://img.shields.io/docker/stars/anonymtsk/3proxy.svg) ![](https://img.shields.io/docker/pulls/anonymtsk/3proxy.svg)
+# 3proxy
 
-#### Environment:
+![](https://img.shields.io/badge/Alpine-3.8-brightgreen.svg)
+
+HTTP and SOCKS5 proxy in Docker.
+
+Image: `ghcr.io/anonym-tsk/3proxy:latest`
+
+```sh
+docker pull ghcr.io/anonym-tsk/3proxy:latest
+```
+
+## Environment
 
 | Environment | Default value |
 |-------------|---------------|
-| USER        | user          |
-| PASSWORD    | password      |
+| USER        | `user` |
+| PASSWORD    | `password` (generates a random password) |
 | PORT        | unset (HTTP disabled) |
 | SOCKS_PORT  | unset (SOCKS5 disabled) |
-| DNS1        | 1.1.1.1       |
-| DNS2        | 8.8.8.8       |
-| DENY        | * * 127.0.0.1 |
+| DNS1        | `1.1.1.1` |
+| DNS2        | `8.8.8.8` |
+| DENY        | `* * 127.0.0.1` |
 
-Set `PORT` to enable HTTP, `SOCKS_PORT` to enable SOCKS5, or both to run both
-services with the same credentials and access rules. At least one port is required.
-Publish each enabled port with Docker's `-p` option.
+Set at least one of `PORT` or `SOCKS_PORT`. Both services use the same credentials
+and access rules.
 
-For SOCKS5 only, replace `-e PORT=3128` and `-p 3128:3128` below with
-`-e SOCKS_PORT=1080` and `-p 1080:1080`. For both, add those SOCKS5 options
-alongside the HTTP options.
+## Docker Compose
 
-#### Custom usage:
+```yaml
+services:
+  3proxy:
+    image: ghcr.io/anonym-tsk/3proxy:latest
+    restart: unless-stopped
+    ports:
+      - "3128:3128"
+      - "1080:1080"
+    environment:
+      USER: proxy
+      PASSWORD: "change-me"
+      PORT: "3128"
+      SOCKS_PORT: "1080"
+```
 
-    docker run \
-        -d \
-        --name 3proxy \
-        -p 3128:3128 \
-        -e USER=user \
-        -e PASSWORD=password \
-        -e PORT=3128 \
-        -e DNS1=1.1.1.1 \
-        -e DNS2=8.8.8.8 \
-        -e DENY="* * 192.168.0.0/24" \
-        anonymtsk/3proxy
+Set your own password, save as `compose.yaml`, and run `docker compose up -d`.
+Remove `PORT` and its port mapping to disable HTTP, or `SOCKS_PORT` and its
+port mapping to disable SOCKS5.
