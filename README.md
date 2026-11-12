@@ -31,6 +31,7 @@ and access rules.
 services:
   3proxy:
     image: ghcr.io/anonym-tsk/3proxy:latest
+    container_name: 3proxy
     restart: unless-stopped
     ports:
       - "3128:3128"
