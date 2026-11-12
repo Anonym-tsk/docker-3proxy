@@ -28,7 +28,6 @@ FROM alpine:3.8
 # Define default ENV values
 ENV USER=user
 ENV PASSWORD=password
-ENV PORT=3128
 ENV DNS1=1.1.1.1
 ENV DNS2=8.8.8.8
 ENV DENY="* * 127.0.0.1"
@@ -43,7 +42,6 @@ ADD 3proxy.cfg.dist /usr/local/etc/3proxy/
 ADD entrypoint.sh /usr/local/etc/3proxy/
 RUN chmod +x /usr/local/etc/3proxy/entrypoint.sh
 
-EXPOSE $PORT
 ENTRYPOINT ["/usr/local/etc/3proxy/entrypoint.sh"]
 
 CMD ["start_proxy"]

@@ -9,10 +9,21 @@ fi
 PASSWORD_ENCODED="$(mkpasswd -m md5 <<< $PASSWORD)"
 
 if [ "$1" = "start_proxy" ]; then
+    if [ -z "$PORT" ] && [ -z "$SOCKS_PORT" ]; then
+        echo "Set PORT for HTTP proxy and/or SOCKS_PORT for SOCKS5 proxy" >&2
+        exit 1
+    fi
     cp 3proxy.cfg.dist 3proxy.cfg
+    if [ -z "$PORT" ]; then
+        sed -i '/^proxy /d' 3proxy.cfg
+    fi
+    if [ -z "$SOCKS_PORT" ]; then
+        sed -i '/^socks /d' 3proxy.cfg
+    fi
     sed -i 's/__USER__/'"$USER"'/g' 3proxy.cfg && \
     sed -i 's#__PASSWORD__#'"$PASSWORD_ENCODED"'#g' 3proxy.cfg && \
     sed -i 's/__PORT__/'"$PORT"'/g' 3proxy.cfg && \
+    sed -i 's/__SOCKS_PORT__/'"$SOCKS_PORT"'/g' 3proxy.cfg && \
     sed -i 's/__DNS1__/'"$DNS1"'/g' 3proxy.cfg && \
     sed -i 's/__DNS2__/'"$DNS2"'/g' 3proxy.cfg && \
     sed -i 's#__DENY__#'"$DENY"'#g' 3proxy.cfg && \

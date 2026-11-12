@@ -15,6 +15,7 @@ allow *
 auth strong
 maxconn 32
 proxy -p__PORT__
+socks -p__SOCKS_PORT__
 flush
 
 setgid __NOBODY_GROUP__
